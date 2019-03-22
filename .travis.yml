@@ -1,0 +1,23 @@
+language: node_js
+node_js: "8"
+
+deploy:
+  - provider: gcs
+    access_key_id: ${GCS_ID}
+    secret_access_key: ${GCS_KEY}
+    bucket: tutor-info
+    skip_cleanup: true
+    acl: public-read
+    local-dir: dist
+    on:
+      branch: master
+      tags: true
+  - provider: gcs
+    access_key_id: ${GCS_ID}
+    secret_access_key: ${GCS_KEY}
+    bucket: tutor-info-test
+    skip_cleanup: true
+    acl: public-read
+    local-dir: dist
+    on:
+      branch: test
