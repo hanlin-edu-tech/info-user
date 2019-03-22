@@ -6,8 +6,6 @@ before_install:
 
 deploy:
   - provider: gcs
-    edge:
-        branch: gcs-ng
     project_id: tutor-204108
     credentials: gcs.json
     bucket: tutor-info
@@ -19,8 +17,6 @@ deploy:
       branch: master
       tags: true
   - provider: gcs
-    edge:
-        branch: gcs-ng
     project_id: tutor-204108
     credentials: gcs.json
     bucket: tutor-info-test
@@ -30,4 +26,3 @@ deploy:
     local-dir: dist
     on:
       branch: test
-      tags: true
