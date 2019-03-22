@@ -30,3 +30,4 @@ deploy:
     local-dir: dist
     on:
       branch: test
+      tags: true
