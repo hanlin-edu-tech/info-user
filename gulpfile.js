@@ -68,18 +68,18 @@ function buildStyle(){
     });
 }
 
-function uploadGCS(bucket){
+function uploadGCS(bucket, metadata){
     return es.map(function(file, cb){
         if(file.isDirectory()){
             cb(null, file);
         }else{
             var options = {
                 destination: file.relative,
-                resumable: true,
-                metadata: {
-                    cacheControl: 'public, max-age=3600'
-                }
+                resumable: true
             };
+            if(file.extname.toLowerCase() == ".html"){
+                options.metadata = {cacheControl: 'public, max-age=3600'};
+            }
             storage.bucket(bucket).upload(file.path, options, function(error){
                 if(error != null){
                     console.log(error);
@@ -160,7 +160,7 @@ function copyHtmlTask(){
 
 function deployTask(bucket){
     return gulp.src('dist/**/*')
-        .pipe(uploadGCS(bucket))
+        .pipe(uploadGCS(bucket));
 }
 
 
