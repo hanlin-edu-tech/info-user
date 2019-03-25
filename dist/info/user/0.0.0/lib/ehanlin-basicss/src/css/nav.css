@@ -1,0 +1,30 @@
+.nav {
+  background: #009ac9;
+  font-family: "微軟正黑體", Arial, sans-serif;
+  margin: 10px auto;
+  border: solid 3px #FFF;
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px 1px #CCC;
+}
+.nav a {
+  color: #ecf0f1;
+}
+.nav li {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+  color: #ecf0f1;
+  width: 165px;
+  cursor: pointer;
+}
+.nav li :hover {
+  color: #ffffff;
+}
+.nav li :hover a {
+  color: #ffffff;
+}
+.nav li + li {
+  border-left: #ffffff dashed 1px;
+}

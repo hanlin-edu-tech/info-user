@@ -1,0 +1,57 @@
+{
+  "_from": "ehanlin-basicss@0.0.4",
+  "_id": "ehanlin-basicss@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-jVFgATYiwbQ9gpAWsrES2fIjftGo44D+ix09KOiKQOra+UPE2T6F4kDLRgo1R3FxFu++mVWogxqNeFzOECLV2g==",
+  "_location": "/ehanlin-basicss",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "ehanlin-basicss@0.0.4",
+    "name": "ehanlin-basicss",
+    "escapedName": "ehanlin-basicss",
+    "rawSpec": "0.0.4",
+    "saveSpec": null,
+    "fetchSpec": "0.0.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ehanlin-basicss/-/ehanlin-basicss-0.0.4.tgz",
+  "_shasum": "11063ae49f39c7f833a17e415faad986eb3993f5",
+  "_spec": "ehanlin-basicss@0.0.4",
+  "_where": "/Users/hotdog929/git/info-user",
+  "author": {
+    "name": "eHanlin-rodick",
+    "email": "rodick@ehanlin.com.tw"
+  },
+  "bugs": {
+    "url": "https://github.com/eHanlin/ehanlin-basicss/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "eHanlin basic style",
+  "devDependencies": {
+    "browser-sync": "2.26.3",
+    "gulp": "3.9.1",
+    "gulp-less": "3.5.0",
+    "gulp-notify": "3.2.0",
+    "gulp-plumber": "1.2.1"
+  },
+  "homepage": "https://github.com/eHanlin/ehanlin-basicss#readme",
+  "keywords": [
+    "ehanlin"
+  ],
+  "license": "MIT",
+  "main": "gulpfile.js",
+  "name": "ehanlin-basicss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eHanlin/ehanlin-basicss.git"
+  },
+  "scripts": {
+    "test": "browserSync"
+  },
+  "version": "0.0.4"
+}

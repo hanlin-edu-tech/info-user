@@ -1,0 +1,55 @@
+@import "var";
+@charset "utf-8";
+
+.menu {
+  background: #009ac9;
+  box-shadow: 1px 1px 4px 1px #CCC, inset 0 0 0 3px #FFF;
+  float: left;
+  text-align: left;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 15px;
+  display: inline-block;
+  font-size: 1.2em;
+
+  a {
+    padding: 8px 0;
+    display: inline-block;
+    color: white;
+    border-bottom: 1px #1a507d dotted;
+    font-weight: bold;
+    width: 100%;
+
+    &:hover, &.select {
+      background: linear-gradient(to right, rgba(11, 36, 59, 1) 0%, rgba(0, 154, 201, 1) 100%);
+      text-decoration: none;
+    }
+
+    &:before {
+      content: " ";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: url("@{images-path}/l_icons.png") no-repeat -132px -3px;
+    }
+  }
+
+  a.none {
+    background: none !important;
+    cursor: default;
+  }
+
+  .nested-padding(@n, @i: 0) when (@i < @n) {
+    li {
+      a {
+        width: (180px - 30 * @i);
+        padding-left: (0px + 30 * @i);
+      }
+
+      .nested-padding(@n, (@i + 1));
+    }
+  }
+
+  .nested-padding(3)
+}
+

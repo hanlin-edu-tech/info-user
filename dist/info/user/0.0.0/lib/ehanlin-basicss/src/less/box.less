@@ -1,0 +1,124 @@
+@import "var";
+@charset "utf-8";
+.box {
+  background: #fff;
+  box-shadow: 1px 1px 4px 1px #ccc;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  padding: 8px 0;
+  display: inline-block;
+  text-align: left;
+  font-family: "微軟正黑體", Arial, sans-serif;
+
+  &.right {
+    display: block;
+    width: auto;
+    margin-left: 220px;
+  }
+
+  .box-title {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 42px;
+    background: data-uri("@{images-path}/mainwBoxTitleBk.gif") no-repeat 0 25px;
+
+    .content {
+      display: inline-block;
+      font-size: 1.3em;
+      color: #3c3c3f;
+      font-weight: bold;
+      padding: 8px 0 14px 15px;
+
+      span {
+        color: #37b0df;
+      }
+    }
+
+    .tag {
+      color: #fff;
+      position: relative;
+      width: auto;
+      height: 19px;
+      float: left;
+      margin-left: -1px;
+      padding: 3px 10px;
+      top: 7px;
+      font-weight: bold;
+      z-index: 12;
+
+      p {
+        position: relative;
+        z-index: 10;
+      }
+
+      &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: -15px;
+        z-index: 9;
+        display: inline-block;
+        width: 36px;
+        height: 25px;
+      }
+
+      &.blue {
+        background: url("@{images-path}/wBTitleTag_bk.png") no-repeat 0 0;
+        &:after {
+          background: data-uri("@{images-path}/wBTitleTagBlue_end.jpg") no-repeat 0 0;
+        }
+      }
+
+      &.purple {
+        background: url("@{images-path}/wBTitleTag_bk.png") no-repeat 0px -26px;
+        &:after {
+          background: data-uri("@{images-path}/wBTitleTagBlue_end.jpg") no-repeat 0px -26px;
+        }
+      }
+
+      &.green {
+        background: url("@{images-path}/wBTitleTag_bk.png") no-repeat 0px -52px;
+        &:after {
+          background: data-uri("@{images-path}/wBTitleTagBlue_end.jpg") no-repeat 0px -52px;
+        }
+      }
+
+      &.red {
+        background: url("@{images-path}/wBTitleTag_bk.png") no-repeat 0px -78px;
+        &:after {
+          background: data-uri("@{images-path}/wBTitleTagBlue_end.jpg") no-repeat 0px -78px;
+        }
+      }
+    }
+  }
+
+  .h-line {
+    display: block;
+    width: 95%;
+    margin: 10px 0;
+    border: none;
+    height: 1px;
+    background: #ccc;
+
+    &:before {
+      display: block;
+      content: " ";
+      width: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, white, #ccc);
+      float: left;
+    }
+
+    &:after {
+      display: block;
+      content: " ";
+      width: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, #ccc, white);
+      float: right;
+    }
+  }
+}
+

@@ -1,0 +1,20 @@
+.ehanlin-header {
+  margin: 0 auto 10px auto;
+  padding: 10px 5px 0 5px;
+  text-align: right;
+  line-height: 1.6em;
+}
+.ehanlin-header .header-menu li {
+  display: inline-block;
+}
+.ehanlin-header .header-menu li + li:before {
+  content: "|";
+  margin: 0 5px;
+}
+.ehanlin-header .logo {
+  float: left;
+  display: inline-block;
+  width: 304px;
+  height: 35px;
+  background: url("http://www.ehanlin.com.tw/images/ehanlin_logo.png");
+}

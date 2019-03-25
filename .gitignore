@@ -4,7 +4,7 @@ npm-debug.log*
 node_modules
 .npm
 .node_repl_history
-src/js
-src/css
+src/*/js
+src/*/css
 src/**/*.html
-src/lib
+src/*/lib

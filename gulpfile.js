@@ -1,3 +1,5 @@
+var packageJson = require('./package.json');
+var version = packageJson.version;
 var gulp = require('gulp-param')(require('gulp'), process.argv);
 var rename = require("gulp-rename");
 var fs = require('fs');
@@ -22,7 +24,7 @@ function buildHtml(){
         file.contents = new Buffer(pug.renderFile(
             file.path, { 
                 filename : file.path,
-                pretty : "    "
+                version : version
             }
         ));
         cb(null, file);
@@ -51,7 +53,8 @@ function buildStyle(){
             file.contents.toString(), {
                 paths : [],
                 filename : file.path,
-                compress : false
+                compress : false,
+                modifyVars : {version : `"${version}"`}
             },
             function(error, result){
                 if(error != null){
@@ -97,7 +100,6 @@ function uploadGCS(bucket){
 
 function libTask(dest){
     return function(){
-        var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8').toString());
         if(!packageJson.dependencies){
             packageJson.dependencies = {};
         }
@@ -133,17 +135,22 @@ function styleTask(dest){
             .pipe(gulp.dest(dest));};
 }
 
+function copyImgTask(dest){
+    return function(){
+        return gulp.src('src/img/**/*')
+            .pipe(gulp.dest(dest));};
+}
+
+
+function cleanDistTask(){
+    return del(['dist']);    
+}
+
 function cleanTask(){
     return del([
         'dist',
         'src/**/*.html',
-        'src/js',
-        'src/css']);
-}
-
-function copyImgTask(){
-    return gulp.src('src/img/**/*')
-        .pipe(gulp.dest(distPath+'/img'));
+        `src/${version}`]);
 }
 
 function copyHtmlTask(){
@@ -161,10 +168,20 @@ gulp.task('clean', cleanTask);
 gulp.task('deploy', deployTask)
 
 gulp.task('html', htmlTask('src'));
-gulp.task('script', scriptTask('src/js'));
-gulp.task('style', styleTask('src/css'));
-gulp.task('lib', libTask('src/lib'))
-gulp.task('build', ['html', 'script', 'style', 'lib']);
+gulp.task('script', scriptTask(`src/${version}/js`));
+gulp.task('style', styleTask(`src/${version}/css`));
+gulp.task('lib', libTask(`src/${version}/lib`))
+gulp.task('build', ['clean'], function(){
+    var deferred = Q.defer();
+    Q.fcall(function(){return util.logStream(libTask(`src/${version}/lib`))})
+    .then(function(){return Q.all([
+        util.logStream(copyImgTask(`src/${version}/img`)),
+        util.logStream(htmlTask('src')),
+        util.logStream(scriptTask(`src/${version}/js`)),
+        util.logStream(styleTask(`src/${version}/css`))])});
+    return deferred.promise;
+});
+
 
 gulp.task('watch', function() {
   gulp.watch('src/pug/**/*.pug', ['html']);
@@ -172,14 +189,14 @@ gulp.task('watch', function() {
   gulp.watch('src/less/**/*.less', ['style']);
 });
 
-gulp.task('package', function(){
+gulp.task('package', ['lib'], function(){
     var deferred = Q.defer();
-    Q.fcall(function(){return util.logPromise(cleanTask)})
+    Q.fcall(function(){return util.logPromise(cleanDistTask)})
     .then(function(){return Q.all([
-        util.logStream(copyImgTask),
-        util.logStream(libTask(distPath+'/lib')),
+        util.logStream(copyImgTask(`${distPath}/${version}/img`)),
+        util.logStream(libTask(`${distPath}/${version}/lib`)),
         util.logStream(htmlTask(distPath)),
-        util.logStream(scriptTask(distPath+'/js')),
-        util.logStream(styleTask(distPath+'/css'))])});
+        util.logStream(scriptTask(`${distPath}/${version}/js`)),
+        util.logStream(styleTask(`${distPath}/${version}/css`))])});
     return deferred.promise;
 });

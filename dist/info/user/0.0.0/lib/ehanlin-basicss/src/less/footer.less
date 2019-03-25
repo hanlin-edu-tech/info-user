@@ -1,0 +1,73 @@
+@import "var";
+.ehanlin-footer {
+  margin: 10px auto;
+  border-top: 1px solid #cacaca;
+  padding: 10px 5px;
+  color: #797979;
+  line-height: 2em;
+  text-align: right;
+
+  .footer-left {
+    float: left;
+    text-align: left;
+  }
+
+  .footer-menu li {
+    display: inline;
+    margin-left: 10px;
+  }
+
+  .browser {
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      margin-left: 5px;
+
+      a {
+        color: #797979;
+      }
+
+      span {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background: url("@{images-url}/l_icons.png") no-repeat 0 0;
+        margin: 0 2px -3px 0;
+      }
+    }
+
+    .ie {
+      background-position: -500px 0;
+    }
+
+    .firefox {
+      background-position: -525px 0;
+    }
+
+    .safari {
+      background-position: -550px 0;
+    }
+
+    .chrome {
+      background-position: -575px 0;
+    }
+
+    a:hover .ie {
+      background-position: -500px -27px;
+    }
+
+    a:hover .firefox {
+      background-position: -525px -27px;
+    }
+
+    a:hover .safari {
+      background-position: -550px -27px;
+    }
+
+    a:hover .chrome {
+      background-position: -575px -27px;
+    }
+  }
+}
+

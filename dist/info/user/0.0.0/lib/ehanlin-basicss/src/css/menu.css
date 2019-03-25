@@ -1,0 +1,48 @@
+@charset "utf-8";
+.menu {
+  background: #009ac9;
+  box-shadow: 1px 1px 4px 1px #CCC, inset 0 0 0 3px #FFF;
+  float: left;
+  text-align: left;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 15px;
+  display: inline-block;
+  font-size: 1.2em;
+}
+.menu a {
+  padding: 8px 0;
+  display: inline-block;
+  color: white;
+  border-bottom: 1px #1a507d dotted;
+  font-weight: bold;
+  width: 100%;
+}
+.menu a:hover,
+.menu a.select {
+  background: linear-gradient(to right, #0b243b 0%, #009ac9 100%);
+  text-decoration: none;
+}
+.menu a:before {
+  content: " ";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url("../images/l_icons.png") no-repeat -132px -3px;
+}
+.menu a.none {
+  background: none !important;
+  cursor: default;
+}
+.menu li a {
+  width: 180px;
+  padding-left: 0px;
+}
+.menu li li a {
+  width: 150px;
+  padding-left: 30px;
+}
+.menu li li li a {
+  width: 120px;
+  padding-left: 60px;
+}
