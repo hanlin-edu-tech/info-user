@@ -1,4 +1,4 @@
-var gulp = require('gulp');
+var gulp = require('gulp-param')(require('gulp'), process.argv);
 var rename = require("gulp-rename");
 var fs = require('fs');
 var es = require('event-stream');
@@ -11,6 +11,9 @@ var browserify = require('browserify');
 var coffeeify = require('coffeeify');
 var less = require('less');
 var pug = require('pug');
+
+var Storage = require('@google-cloud/storage').Storage;
+var storage = new Storage();
 
 var distPath = 'dist/info/user';
 
@@ -59,6 +62,36 @@ function buildStyle(){
                 cb(null, file);
             }
         );
+    });
+}
+
+function uploadGCS(bucket){
+    return es.map(function(file, cb){
+        if(file.isDirectory()){
+            cb(null, file);
+        }else{
+            var options = {
+                destination: file.relative,
+                resumable: true,
+                metadata: {
+                    cacheControl: 'public, max-age=3600'
+                }
+            };
+            storage.bucket(bucket).upload(file.path, options, function(error){
+                if(error != null){
+                    console.log(error);
+                    throw error;
+                }
+                storage.bucket(bucket).file(file.relative).makePublic(function(error){
+                    if(error != null){
+                        console.log(error);
+                        throw error;                        
+                    }
+                    console.log(file.relative+" uploaded");
+                    cb(null, file);
+                });
+            });            
+        }
     });
 }
 
@@ -118,8 +151,14 @@ function copyHtmlTask(){
         .pipe(gulp.dest(distPath));
 }
 
+function deployTask(bucket){
+    return gulp.src('dist/**/*')
+        .pipe(uploadGCS(bucket))
+}
+
 
 gulp.task('clean', cleanTask);
+gulp.task('deploy', deployTask)
 
 gulp.task('html', htmlTask('src'));
 gulp.task('script', scriptTask('src/js'));
