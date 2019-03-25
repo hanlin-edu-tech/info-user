@@ -1,26 +1,26 @@
 {
-  "_from": "ehanlin-basicss@0.0.4",
-  "_id": "ehanlin-basicss@0.0.4",
+  "_from": "ehanlin-basicss@0.0.5",
+  "_id": "ehanlin-basicss@0.0.5",
   "_inBundle": false,
-  "_integrity": "sha512-jVFgATYiwbQ9gpAWsrES2fIjftGo44D+ix09KOiKQOra+UPE2T6F4kDLRgo1R3FxFu++mVWogxqNeFzOECLV2g==",
+  "_integrity": "sha512-hcY6ehj2oSRU7c1snztvZ5bT3rVLIdu4pt6ZB/0ilqERq6FG2yDsKjErLkhObMPyuNEcvVpevfyNsczuqVWP9Q==",
   "_location": "/ehanlin-basicss",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "ehanlin-basicss@0.0.4",
+    "raw": "ehanlin-basicss@0.0.5",
     "name": "ehanlin-basicss",
     "escapedName": "ehanlin-basicss",
-    "rawSpec": "0.0.4",
+    "rawSpec": "0.0.5",
     "saveSpec": null,
-    "fetchSpec": "0.0.4"
+    "fetchSpec": "0.0.5"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/ehanlin-basicss/-/ehanlin-basicss-0.0.4.tgz",
-  "_shasum": "11063ae49f39c7f833a17e415faad986eb3993f5",
-  "_spec": "ehanlin-basicss@0.0.4",
+  "_resolved": "https://registry.npmjs.org/ehanlin-basicss/-/ehanlin-basicss-0.0.5.tgz",
+  "_shasum": "3d3f07d9e351b0c2616b17b8783b6495c4e43fae",
+  "_spec": "ehanlin-basicss@0.0.5",
   "_where": "/Users/hotdog929/git/info-user",
   "author": {
     "name": "eHanlin-rodick",
@@ -35,9 +35,10 @@
   "devDependencies": {
     "browser-sync": "2.26.3",
     "gulp": "3.9.1",
-    "gulp-less": "3.5.0",
+    "gulp-less": "4.0.1",
     "gulp-notify": "3.2.0",
-    "gulp-plumber": "1.2.1"
+    "gulp-plumber": "1.2.1",
+    "less": "3.9.0"
   },
   "homepage": "https://github.com/eHanlin/ehanlin-basicss#readme",
   "keywords": [
@@ -53,5 +54,5 @@
   "scripts": {
     "test": "browserSync"
   },
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
