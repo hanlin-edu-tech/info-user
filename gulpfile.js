@@ -77,7 +77,7 @@ function uploadGCS(bucket, metadata){
                 destination: file.relative,
                 resumable: true
             };
-            if(file.extname.toLowerCase() == ".html"){
+            if(file.relative.substr(file.relative.length-5, 5).toLowerCase() == ".html"){
                 options.metadata = {cacheControl: 'public, max-age=3600'};
             }
             storage.bucket(bucket).upload(file.path, options, function(error){
