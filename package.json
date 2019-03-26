@@ -42,6 +42,6 @@
     "ehanlin-basicss": "0.0.5"
   },
   "scripts": {
-    "test": "gulp package $TRAVIS_BRANCH"
+    "test": "gulp package --branch $TRAVIS_BRANCH"
   }
 }

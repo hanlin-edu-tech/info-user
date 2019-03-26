@@ -203,7 +203,8 @@ gulp.task('watch', function() {
 });
 
 gulp.task('package', ['lib'], function(branch){
-    if(branch){
+    if(typeof branch !== 'boolean' && branch){
+        console.log("branch true")
         updateBranchVers(branch);
     }
     var deferred = Q.defer();
