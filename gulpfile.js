@@ -172,6 +172,7 @@ function copyHtmlTask(){
 
 function deployTask(branch){
     updateBranchVers(branch);
+    console.log(`Branch is ${branch}`)
     return gulp.src('dist/**/*')
         .pipe(uploadGCS(branchVers.bucket));
 }
@@ -204,7 +205,7 @@ gulp.task('watch', function() {
 
 gulp.task('package', ['lib'], function(branch){
     if(typeof branch !== 'boolean' && branch){
-        console.log("branch true")
+        console.log(`Branch is ${branch}`)
         updateBranchVers(branch);
     }
     var deferred = Q.defer();
