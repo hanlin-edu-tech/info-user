@@ -8,3 +8,4 @@ src/*/js
 src/*/css
 src/**/*.html
 src/*/lib
+dist
