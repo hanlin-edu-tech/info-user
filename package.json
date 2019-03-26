@@ -2,7 +2,9 @@
   "name": "info-user",
   "description": "info-user",
   "author": "hotdog929 <hotdog929@gmail.com>",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "platformUrl": "https://www.ehanlin.com.tw",
+  "s3Path": "https://s3-ap-northeast-1.amazonaws.com/ehanlin-web-resource",
   "repository": {
     "type": "git",
     "url": "https://github.com/hanlin-edu-tech/info-user.git"
@@ -27,6 +29,6 @@
     "ehanlin-basicss": "0.0.5"
   },
   "scripts": {
-    "test": "echo website"
+    "test": "gulp package"
   }
 }

@@ -1,5 +1,7 @@
 var packageJson = require('./package.json');
 var version = packageJson.version;
+var platformUrl = packageJson.platformUrl;
+var s3Path = packageJson.s3Path;
 var gulp = require('gulp-param')(require('gulp'), process.argv);
 var rename = require("gulp-rename");
 var fs = require('fs');
@@ -24,7 +26,9 @@ function buildHtml(){
         file.contents = new Buffer(pug.renderFile(
             file.path, { 
                 filename : file.path,
-                version : version
+                version : version,
+                platformUrl : platformUrl,
+                s3Path : s3Path
             }
         ));
         cb(null, file);
