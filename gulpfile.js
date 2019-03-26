@@ -1,7 +1,7 @@
 var packageJson = require('./package.json');
 var version = packageJson.version;
-var platformUrl = packageJson.platformUrl;
-var s3Path = packageJson.s3Path;
+var branchVers, platformUrl, s3Path, webcomponentVersion;
+updateBranchVers(packageJson.defaultBranch);
 var gulp = require('gulp-param')(require('gulp'), process.argv);
 var rename = require("gulp-rename");
 var fs = require('fs');
@@ -21,6 +21,13 @@ var storage = new Storage();
 
 var distPath = 'dist/info/user';
 
+function updateBranchVers(branch){
+    branchVers = packageJson.branch[branch];
+    platformUrl = branchVers.platformUrl;
+    s3Path = branchVers.s3Path;
+    webcomponentVersion = branchVers.webcomponentVersion;
+}
+
 function buildHtml(){
     return es.map(function(file, cb){
         file.contents = new Buffer(pug.renderFile(
@@ -28,7 +35,8 @@ function buildHtml(){
                 filename : file.path,
                 version : version,
                 platformUrl : platformUrl,
-                s3Path : s3Path
+                s3Path : s3Path,
+                webcomponentVersion : webcomponentVersion
             }
         ));
         cb(null, file);
@@ -162,9 +170,10 @@ function copyHtmlTask(){
         .pipe(gulp.dest(distPath));
 }
 
-function deployTask(bucket){
+function deployTask(branch){
+    updateBranchVers(branch);
     return gulp.src('dist/**/*')
-        .pipe(uploadGCS(bucket));
+        .pipe(uploadGCS(branchVers.bucket));
 }
 
 
@@ -193,7 +202,10 @@ gulp.task('watch', function() {
   gulp.watch('src/less/**/*.less', ['style']);
 });
 
-gulp.task('package', ['lib'], function(){
+gulp.task('package', ['lib'], function(branch){
+    if(branch){
+        updateBranchVers(branch);
+    }
     var deferred = Q.defer();
     Q.fcall(function(){return util.logPromise(cleanDistTask)})
     .then(function(){return Q.all([

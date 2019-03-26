@@ -8,12 +8,12 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: gulp deploy --bucket tutor-info
+    script: gulp deploy --branch master
     on:
       branch: master
       tags: true
   - provider: script
     skip_cleanup: true
-    script: gulp deploy --bucket tutor-info-test
+    script: gulp deploy --branch test
     on:
       branch: test
