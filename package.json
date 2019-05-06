@@ -2,7 +2,7 @@
   "name": "info-user",
   "description": "info-user",
   "author": "hotdog929 <hotdog929@gmail.com>",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "defaultBranch": "test",
   "branch" : {
     "test" : {
