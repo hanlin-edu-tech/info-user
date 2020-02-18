@@ -12,6 +12,6 @@ gulp package
 
 ##GCP 本機佈署
 ```sh
-gsutil -m rm -r gs://tutor-info-test/info/user/*
-gsutil -m cp -r -a public-read dist/info/user gs://tutor-info-test/info/user
+gsutil -m rm -r gs://tutor-test-info/infos/user/*
+gsutil -m cp -r -a public-read ./dist/infos/user gs://tutor-test-info/infos/user
 ```
