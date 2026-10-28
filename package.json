@@ -41,6 +41,9 @@
   "dependencies": {
     "ehanlin-basicss": "0.0.5"
   },
+  "overrides": {
+    "graceful-fs": "^4.2.11"
+  },
   "scripts": {
     "test": "gulp package --branch $TRAVIS_BRANCH"
   }
